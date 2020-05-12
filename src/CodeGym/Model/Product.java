@@ -28,7 +28,6 @@ public abstract class Product {
         return description;
     }
 
-    public abstract void setId(String id);
     public abstract void setName(String name);
     public abstract void setPrice(double price);
     public abstract void setBrand(String brand);

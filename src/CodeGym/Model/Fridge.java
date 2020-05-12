@@ -6,10 +6,6 @@ public class Fridge extends Product {
         return "ID : "+getId()+" , Name : "+getName()+" , Brand : "+getBrand()+" , Capacity : "+getCapacity()+" , Price : " +getPrice()+" , Description : "+getDescription();
     }
 
-    @Override
-    public void setId(String id) {
-        this.id = F+id;
-    }
 
     @Override
     public void setName(String name) {
@@ -36,7 +32,7 @@ public class Fridge extends Product {
 
     public Fridge(){};
 
-    public Fridge(String id,String name,String brand, double capacity,double price ,String description){
+    public Fridge(String id, String name, String brand, double capacity, double price , String description){
         this.id = F+id;
         this.name =name;
         this.brand = brand;

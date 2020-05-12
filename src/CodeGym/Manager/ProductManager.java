@@ -32,10 +32,21 @@ public class ProductManager implements Function {
         Product product = new Fridge(id, name, brand, inch, price, description);
         products.add(product);
     }
-//    public boolean checkID(String id){
-//
-//        }
-//    }
+    public boolean checkID(String id){
+        for (Product product :products){
+            if (checkProductTV(product)){
+                product =(Television)product;
+                if (product.getId().equals(T+id))
+                    return true;
+            }
+            if (checkProductFridge(product)){
+                product =(Fridge)product;
+                if (product.getId().equals(F+id))
+                    return true;
+            }
+        }
+        return false;
+    }
 
     public boolean checkProductFridge(Product product) {
      Pattern pattern = Pattern.compile(ID_FRIDGE);
@@ -112,7 +123,7 @@ public class ProductManager implements Function {
 
 
     @Override
-    public void editNameByID(int id, String newName) {
+    public void editNameByID(String id, String newName) {
         for (Product product : products) {
             if (checkProductFridge(product)) {
                 if (product.getId().equals(F + id)) {
@@ -129,11 +140,11 @@ public class ProductManager implements Function {
     }
 
     @Override
-    public void editBrandByID(int id, String newBrand) {
+    public void editBrandByID(String id, String newBrand) {
         for (Product product : products) {
             if (checkProductFridge(product)) {
                 if (product.getId().equals(F + id)) {
-                    product.setName(newBrand);
+                    product.setBrand(newBrand);
                     return;
                 }
             } else if (checkProductTV(product)) {
@@ -146,7 +157,7 @@ public class ProductManager implements Function {
     }
 
     @Override
-    public void editPriceByID(int id, double newPrice) {
+    public void editPriceByID(String id, double newPrice) {
         for (Product product : products) {
             if (checkProductFridge(product)) {
                 if (product.getId().equals(F + id)) {
@@ -163,7 +174,7 @@ public class ProductManager implements Function {
     }
 
     @Override
-    public void editDescriptionByID(int id, String newDescription) {
+    public void editDescriptionByID(String id, String newDescription) {
         for (Product product : products) {
             if (checkProductFridge(product)) {
                 if (product.getId().equals(F + id)) {
@@ -220,15 +231,18 @@ public class ProductManager implements Function {
 
     public void deleteProduct(String id) {
         for (Product product : products) {
-            if (checkProductFridge(product)) {
-                if (product.getId().equals(F + id)) {
+            if (checkProductTV(product)){
+                product = (Television)product;
+                if (product.getId().equals(T+id)){
                     products.remove(product);
-                    break;
+                    return;
                 }
-            } else if (checkProductTV(product)) {
-                if (product.getId().equals(T + id)) {
+            }
+            if (checkProductFridge(product)){
+                product = (Fridge)product;
+                if (product.getId().equals(F+id)){
                     products.remove(product);
-                    break;
+                    return;
                 }
             }
         }
@@ -237,6 +251,35 @@ public class ProductManager implements Function {
     public void displayAll(ProductList<Product> products){
         for (Product product :products){
             System.out.println(product.toString());
+        }
+    }
+
+    public void findByName(String name){
+        for (Product product :products){
+            if (checkProductTV(product)){
+                product = (Television)product;
+                if (product.getName().contains(name))
+                    System.out.println(product.toString());
+            }
+            if (checkProductFridge(product)){
+                product = (Fridge)product;
+                if (product.getName().contains(name))
+                    System.out.println(product.toString());
+            }
+        }
+    }
+    public void findByID(String id){
+        for (Product product : products){
+            if (checkProductTV(product)){
+                product = (Television)product;
+                if (product.getId().contains(F+id))
+                    System.out.println(product.toString());
+            }
+            if (checkProductFridge(product)){
+                product =(Fridge)product;
+                if (product.getId().contains(F+id))
+                    System.out.println(product.toString());
+            }
         }
     }
 }

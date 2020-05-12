@@ -5,10 +5,10 @@ import CodeGym.ProductList.ProductList;
 
 public interface Function {
 
-    void editNameByID(int id, String newName);
-    void editBrandByID(int id, String newBrand);
-    void editPriceByID(int id, double newPrice);
-    void editDescriptionByID(int id, String description);
+    void editNameByID(String  id, String newName);
+    void editBrandByID(String id, String newBrand);
+    void editPriceByID(String id, double newPrice);
+    void editDescriptionByID(String id, String description);
     ProductList<Product> sortPriceUp();
     ProductList<Product> sortPriceDown();
 }

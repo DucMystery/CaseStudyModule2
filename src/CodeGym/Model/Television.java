@@ -4,16 +4,8 @@ public class Television extends Product {
     @Override
     public String toString() {
         return "ID : "+getId()+" , Name : "+getName()+" , Brand : "+getBrand()+" , Inch : "+getInch()+" , Description : "+getDescription();
-    }
-    @Override
-    public void setId(String id) {
-        this.id = T+id;
-    }
 
-    @Override
-    public void setName(String name) {
-        this.name =name;
-    }
+}
 
     @Override
     public void setPrice(double price) {
@@ -34,7 +26,7 @@ public class Television extends Product {
 
     public Television(){}
 
-    public Television(String id, String name, String brand, double inch,double price,String description){
+    public Television(String id, String name, String brand, double inch, double price, String description){
         this.id = T+id;
         this.name = name;
         this.brand = brand;
@@ -45,6 +37,11 @@ public class Television extends Product {
 
     public String getId(){
         return id;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getInch() {
