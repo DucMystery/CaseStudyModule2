@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class ProductManager implements Function {
     private final ProductList<Product> products;
     public final String ID_FRIDGE = "^[I,D]{2}\\s[:]{1}\\s[2]{1}.*$";
-    public final String ID_TV = "^[I,D]{2}\\\\s[:]{1}\\\\s[1]{1}.*$";
+    public final String ID_TV = "^[I,D]{2}\\s[:]{1}\\s[1]{1}.*$";
     public final String F = "200";
     public final String T = "100";
     Pattern pattern = Pattern.compile(ID_FRIDGE);
@@ -29,7 +29,7 @@ public class ProductManager implements Function {
     }
 
     public void creatTelevision(String id, String name, String brand, double inch, double price, String description) {
-        Product product = new Fridge(id, name, brand, inch, price, description);
+        Product product = new Television(id, name, brand, inch, price, description);
         products.add(product);
     }
     public boolean checkID(String id){

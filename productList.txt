@@ -1,5 +1,6 @@
-ID : 200i3 , Name :     htx11 , Brand :     LG , Capacity : 55.0 , Price : 30.0 , Description :     new 80%1
-ID : 200i2 , Name :     htx1 , Brand :     LG , Capacity : 55.0 , Price : 3000.0 , Description :     new 80%1
-ID : 200i5 , Name :     htx9 , Brand :     LG , Capacity : 55.0 , Price : 3000.0 , Description :     new 80%1
-ID : 200i1 , Name :     htx10 , Brand :     LG , Capacity : 55.0 , Price : 3005.0 , Description :     new 80%1
-ID : 200i6 , Name :     htx2 , Brand :     LG , Capacity : 55.0 , Price : 30001.0 , Description :     new 80%1
+ID : 200i3 , Name :        htx11 , Brand :        LG , Capacity : 55.0 , Price : 30.0 , Description :        new 80%1
+ID : 200i2 , Name :        htx1 , Brand :        LG , Capacity : 55.0 , Price : 3000.0 , Description :        new 80%1
+ID : 200i5 , Name :        htx9 , Brand :        LG , Capacity : 55.0 , Price : 3000.0 , Description :        new 80%1
+ID : 200i1 , Name :        htx10 , Brand :        LG , Capacity : 55.0 , Price : 3005.0 , Description :        new 80%1
+ID : 200i6 , Name :        htx2 , Brand :        LG , Capacity : 55.0 , Price : 30001.0 , Description :        new 80%1
+ID : 200t1 , Name :   SamrtTV  , Brand :   Samsung , Capacity : 55.0 , Price : 2000.0 , Description :   limited
