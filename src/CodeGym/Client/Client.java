@@ -258,6 +258,7 @@ public class Client {
         System.out.println("5. Find product by ID :");
         System.out.println("6. Find by types of product :");
         System.out.println("7. Sum the price of products :");
+        System.out.println("8. Log out :");
         System.out.println("0.Exit.");
         int chooseCustomer = scanner.nextInt();
         switch (chooseCustomer){
@@ -293,6 +294,9 @@ public class Client {
             case 7:
                 System.out.println("Sum the price of products is :"+productManager.sumPriceOfProduct(products)+" $");
                 displayCustomer();
+                break;
+            case 8:
+                account();
                 break;
             case 0:
                 productManager.save();

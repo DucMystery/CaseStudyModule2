@@ -10,12 +10,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ProductManager implements Function {
-    public static final String PRODUCT_LIST_TXT = "productList.txt";
+    public static final String PRODUCT_LIST_TXT = "C:\\Users\\admin\\IdeaProjects\\CaseStudy\\productList.txt";
     private final ProductList<Product> products;
     public final String ID_FRIDGE = "^[I,D]{2}\\s[:]{1}\\s[2]{1}.*$";
-    public final String ID_TV = "^[I,D]{2}\\s[:]{1}\\s[1]{1}.*$";//ID : 2(.*?);
-    public final String F = "2000";
-    public final String T = "1000";
+    public final String ID_TV = "^[I,D]{2}\\s[:]{1}\\s[1]{1}.*$";
+    public final String F = "200";
+    public final String T = "100";
     Pattern pattern = Pattern.compile(ID_FRIDGE);
     Pattern pattern1 = Pattern.compile(ID_TV);
 
