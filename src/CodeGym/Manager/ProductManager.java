@@ -10,11 +10,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ProductManager implements Function {
+    public static final String PRODUCT_LIST_TXT = "productList.txt";
     private final ProductList<Product> products;
     public final String ID_FRIDGE = "^[I,D]{2}\\s[:]{1}\\s[2]{1}.*$";
-    public final String ID_TV = "^[I,D]{2}\\s[:]{1}\\s[1]{1}.*$";
-    public final String F = "200";
-    public final String T = "100";
+    public final String ID_TV = "^[I,D]{2}\\s[:]{1}\\s[1]{1}.*$";//ID : 2(.*?);
+    public final String F = "2000";
+    public final String T = "1000";
     Pattern pattern = Pattern.compile(ID_FRIDGE);
     Pattern pattern1 = Pattern.compile(ID_TV);
 
@@ -36,12 +37,12 @@ public class ProductManager implements Function {
         for (Product product :products){
             if (checkProductTV(product)){
                 product =(Television)product;
-                if (product.getId().equals(T+id))
+                if (product.getId().equalsIgnoreCase((T+id)))
                     return true;
             }
             if (checkProductFridge(product)){
                 product =(Fridge)product;
-                if (product.getId().equals(F+id))
+                if (product.getId().equalsIgnoreCase((F+id)))
                     return true;
             }
         }
@@ -93,7 +94,7 @@ public class ProductManager implements Function {
     }
 
     public void read() throws IOException {
-        FileReader reader = new FileReader("productList.txt");
+        FileReader reader = new FileReader(PRODUCT_LIST_TXT);
         BufferedReader br = new BufferedReader(reader);
         String line;
         while ((line = br.readLine()) != null) {

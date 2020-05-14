@@ -22,91 +22,52 @@ public class Client {
     }
 
     public void account(){
-        System.out.println("You are : ");
-        System.out.println("1. Admin");
-        System.out.println("2.Customer");
+        chooseLogIn();
         int chooseAccount = scanner.nextInt();
         switch (chooseAccount){
             case 1:
-                System.out.println("Enter a name :");
-                scanner.nextLine();
-                String nameAccount = scanner.nextLine();
-                if (nameAccount.equals(NAME)|| nameAccount.equals(NAME1)){
-                    displayAdmin();
-                }else {
-                    System.out.println( "does not exist");
-                    account();
-                }
+                logInAccountAdmin();
                 break;
             case 2:
                 displayCustomer();
             default:
+                System.out.println("Enter 1 to 2 :");
+                account();
         }
     }
 
+    public void logInAccountAdmin() {
+        System.out.println("Enter a name :");
+        scanner.nextLine();
+        String nameAccount = scanner.nextLine();
+        if (nameAccount.equals(NAME)|| nameAccount.equals(NAME1)){
+            displayAdmin();
+        }else {
+            System.out.println( "does not exist");
+            account();
+        }
+    }
+
+    public void chooseLogIn() {
+        System.out.println("You are : ");
+        System.out.println("1. Admin");
+        System.out.println("2.Customer");
+    }
+
     public void displayAdmin(){
-        System.out.println("Select  action:");
-        System.out.println("1.Add new product :");
-        System.out.println("2.Edit name by ID :");
-        System.out.println("3. Edit price by ID :");
-        System.out.println("4. Edit description by ID :");
-        System.out.println("5. Edit brand by ID :");
-        System.out.println("6. Remove product by ID :");
-        System.out.println("0. Exit");
+        chooseAction();
         int chooseAdmin = scanner.nextInt();
         switch (chooseAdmin){
             case 1:
-                System.out.println("choose type of product :");
-                System.out.println("1 . Fridge.");
-                System.out.println("2 . Television.");
-                System.out.println("0. Exit");
+                chooseTyeProduct();
                 int chooseType = scanner.nextInt();
                 switch (chooseType){
                     case 1:
-                        System.out.println("Enter ID of Fridge :");
-                        scanner.nextLine();
-                        String idFridge = scanner.nextLine();
-                        System.out.println("Enter name of Fridge :");
-                        String nameFridge = scanner.nextLine();
-                        System.out.println("Enter brand of Fridge :");
-                        String brandFridge = scanner.nextLine();
-                        System.out.println("Enter capacity of Fridge :");
-                        double capacityFridge = scanner.nextDouble();
-                        System.out.println("Enter price of Fridge :");
-                        double priceFridge =scanner.nextDouble();
-                        System.out.println("Enter description of Fridge :");
-                        scanner.nextLine();
-                        String descriptionFridge = scanner.nextLine();
-                        if (productManager.checkID(idFridge)){
-                            System.out.println("ID already exist !");
-                        }else {
-                            productManager.creatFridge(idFridge,nameFridge,brandFridge,capacityFridge,priceFridge,descriptionFridge);
-                            productManager.save();
-                        }
+                        addNewFridge();
                         displayAdmin();
                         break;
                     case 2:
-                        System.out.println("Enter ID of TV :");
-                        scanner.nextLine();
-                        String idTV = scanner.nextLine();
-                        System.out.println("Enter name of TV :");
-                        String nameTV = scanner.nextLine();
-                        System.out.println("Enter brand of TV :");
-                        String brandTV = scanner.nextLine();
-                        System.out.println("Enter inch of TV :");
-                        double inchTV = scanner.nextDouble();
-                        System.out.println("Enter price of TV :");
-                        double priceTV =scanner.nextInt();
-                        System.out.println("Enter description of TV :");
-                        scanner.nextLine();
-                        String descriptionTV = scanner.nextLine();
-                        if (productManager.checkID(idTV)==true){
-                            System.out.println("ID already exist");
-                        }else {
-                            productManager.creatTelevision(idTV,nameTV,brandTV,inchTV,priceTV,descriptionTV);
-                            productManager.save();
-                            System.out.println("Has added new !");
-                        }
+                        addProductTV();
                         displayAdmin();
                         break;
                     case 0:
@@ -121,63 +82,25 @@ public class Client {
                 changeMethodProduct();
                 break;
             case 3:
-                System.out.println("Enter a ID :");
-                scanner.nextLine();
-                String idPrice = scanner.nextLine();
-                System.out.println("Enter a new price of product :");
-                double newPrice = scanner.nextInt();
-                if (productManager.checkID(idPrice)){
-                    productManager.editPriceByID(idPrice,newPrice);
-                    productManager.save();
-                    System.out.println("Saved changes !");
-                }else {
-                    System.out.println("ID does not exist !");
-                }
+                changePriceOfProduct();
                 displayAdmin();
                 break;
             case 4:
-                System.out.println("Enter a ID :");
-                scanner.nextLine();
-                String idDescription = scanner.nextLine();
-                System.out.println("Enter a new description of product :");
-                String newDescription = scanner.nextLine();
-                if (productManager.checkID(idDescription)){
-                    productManager.editDescriptionByID(idDescription,newDescription);
-                    productManager.save();
-                    System.out.println("Saved changes !");
-                }else {
-                    System.out.println("ID does not exist !");
-                }
+                changeDescriptionOfProduct();
                 displayAdmin();
                 break;
             case 5:
-                System.out.println("Enter a ID :");
-                scanner.nextLine();
-                String idBrand = scanner.nextLine();
-                System.out.println("Enter a new brand of product :");
-                String newBrand = scanner.nextLine();
-                if (productManager.checkID(idBrand)){
-                    productManager.editBrandByID(idBrand,newBrand);
-                    productManager.save();
-                    System.out.println("Saved changes !");
-                }else {
-                    System.out.println("ID does not exist !");
-                }
+                changeBrandOfProduct();
                 displayAdmin();
                 break;
             case 6:
-                System.out.println("Enter a ID :");
-                scanner.nextLine();
-                String idRemove = scanner.nextLine();
-                if (productManager.checkID(idRemove)){
-                    productManager.deleteProduct(idRemove);
-                    productManager.save();
-                    System.out.println("deleted product !");
-                }else {
-                    System.out.println("ID does not exist !");
-                }
+                deleteProduct();
                 displayAdmin();
                 break;
+            case 7:
+                account();
+                break;
+
             case 0:
                 productManager.save();
                 System.exit(0);
@@ -185,6 +108,130 @@ public class Client {
                 System.out.println("Enter 0 to 6 :");
                 displayAdmin();
                 break;
+        }
+    }
+
+    public void deleteProduct() {
+        System.out.println("Enter a ID :");
+        scanner.nextLine();
+        String idRemove = scanner.nextLine();
+        if (productManager.checkID(idRemove)){
+            productManager.deleteProduct(idRemove);
+            productManager.save();
+            System.out.println("deleted product !");
+        }else {
+            System.out.println("ID does not exist !");
+        }
+    }
+
+    public void changeBrandOfProduct() {
+        System.out.println("Enter a ID :");
+        scanner.nextLine();
+        String idBrand = scanner.nextLine();
+        System.out.println("Enter a new brand of product :");
+        String newBrand = scanner.nextLine();
+        if (productManager.checkID(idBrand)){
+            productManager.editBrandByID(idBrand,newBrand);
+            productManager.save();
+            System.out.println("Saved changes !");
+        }else {
+            System.out.println("ID does not exist !");
+        }
+    }
+
+    public void changeDescriptionOfProduct() {
+        System.out.println("Enter a ID :");
+        scanner.nextLine();
+        String idDescription = scanner.nextLine();
+        System.out.println("Enter a new description of product :");
+        String newDescription = scanner.nextLine();
+        if (productManager.checkID(idDescription)){
+            productManager.editDescriptionByID(idDescription,newDescription);
+            productManager.save();
+            System.out.println("Saved changes !");
+        }else {
+            System.out.println("ID does not exist !");
+        }
+    }
+
+    public void changePriceOfProduct() {
+        System.out.println("Enter a ID :");
+        scanner.nextLine();
+        String idPrice = scanner.nextLine();
+        System.out.println("Enter a new price of product :");
+        double newPrice = scanner.nextInt();
+        if (productManager.checkID(idPrice)){
+            productManager.editPriceByID(idPrice,newPrice);
+            productManager.save();
+            System.out.println("Saved changes !");
+        }else {
+            System.out.println("ID does not exist !");
+        }
+    }
+
+    public void addNewFridge() {
+        System.out.println("Enter ID of Fridge :");
+        scanner.nextLine();
+        String idFridge = scanner.nextLine();
+        System.out.println("Enter name of Fridge :");
+        String nameFridge = scanner.nextLine();
+        System.out.println("Enter brand of Fridge :");
+        String brandFridge = scanner.nextLine();
+        System.out.println("Enter capacity of Fridge :");
+        double capacityFridge = scanner.nextDouble();
+        System.out.println("Enter price of Fridge :");
+        double priceFridge =scanner.nextDouble();
+        System.out.println("Enter description of Fridge :");
+        scanner.nextLine();
+        String descriptionFridge = scanner.nextLine();
+        if (productManager.checkID(idFridge)){
+            System.out.println("ID already exist !");
+        }else {
+            productManager.creatFridge(idFridge,nameFridge,brandFridge,capacityFridge,priceFridge,descriptionFridge);
+            productManager.save();
+        }
+    }
+
+    public void chooseAction() {
+        System.out.println("Select  action:");
+        System.out.println("1.Add new product :");
+        System.out.println("2.Edit name by ID :");
+        System.out.println("3. Edit price by ID :");
+        System.out.println("4. Edit description by ID :");
+        System.out.println("5. Edit brand by ID :");
+        System.out.println("6. Remove product by ID :");
+        System.out.println("7. Back account:");
+        System.out.println("0. Exit");
+    }
+
+    public void chooseTyeProduct() {
+        System.out.println("choose type of product :");
+        System.out.println("1 . Fridge.");
+        System.out.println("2 . Television.");
+        System.out.println("0. Exit");
+    }
+
+    public void addProductTV() {
+        System.out.println("Enter ID of TV :");
+        scanner.nextLine();
+        String idTV = scanner.nextLine();
+        System.out.println("Enter name of TV :");
+        String nameTV = scanner.nextLine();
+        System.out.println("Enter brand of TV :");
+        String brandTV = scanner.nextLine();
+        System.out.println("Enter inch of TV :");
+        double inchTV = scanner.nextDouble();
+        System.out.println("Enter price of TV :");
+        double priceTV =scanner.nextInt();
+        System.out.println("Enter description of TV :");
+        scanner.nextLine();
+        String descriptionTV = scanner.nextLine();
+        if (productManager.checkID(idTV)==true){
+            System.out.println("ID already exist");
+        }else {
+            productManager.creatTelevision(idTV,nameTV,brandTV,inchTV,priceTV,descriptionTV);
+            productManager.save();
+            System.out.println("Has added new !");
         }
     }
 

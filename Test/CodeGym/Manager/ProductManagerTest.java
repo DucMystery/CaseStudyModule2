@@ -55,25 +55,12 @@ public class ProductManagerTest {
         assertEquals(display,manager.checkProductTV(productTest));
     }
 
-    @Test
-    public void editNameByID() {
 
-    }
 
-    @Test
-    public void editBrandByID() {
-    }
-
-    @Test
-    public void editPriceByID() {
-    }
-
-    @Test
-    public void editDescriptionByID() {
-    }
 
     @Test
     public void sortPriceUp() {
+
     }
 
     @Test

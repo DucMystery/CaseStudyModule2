@@ -3,7 +3,7 @@ package CodeGym.Model;
 public class Fridge extends Product {
     @Override
     public String toString() {
-        return "ID : "+getId()+" , Name : "+getName()+" , Brand : "+getBrand()+" , Capacity : "+getCapacity()+" , Price : " +getPrice()+" , Description : "+getDescription();
+        return "ID : "+getId()+" , Name : "+getName()+" , Brand : "+getBrand()+" , Capacity : "+getCapacity()+" , Price : " +getPrice()+"  , Description : "+getDescription();
     }
 
 

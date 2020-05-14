@@ -3,7 +3,7 @@ package CodeGym.Model;
 public class Television extends Product {
     @Override
     public String toString() {
-        return "ID : "+getId()+" , Name : "+getName()+" , Brand : "+getBrand()+" , Inch : "+getInch()+" , Description : "+getDescription();
+        return "ID : "+getId()+" , Name : "+getName()+" , Brand : "+getBrand()+" , Inch : "+getInch()+" , Price: "+getPrice()+" , Description : "+getDescription();
 
 }
 
