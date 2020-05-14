@@ -9,6 +9,6 @@ public interface Function {
     void editBrandByID(String id, String newBrand);
     void editPriceByID(String id, double newPrice);
     void editDescriptionByID(String id, String description);
-    ProductList<Product> sortPriceUp();
-    ProductList<Product> sortPriceDown();
+    void sortPriceUp();
+    void sortPriceDown();
 }

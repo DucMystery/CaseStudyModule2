@@ -61,6 +61,7 @@ public class ProductManagerTest {
     @Test
     public void sortPriceUp() {
 
+
     }
 
     @Test
@@ -81,5 +82,9 @@ public class ProductManagerTest {
 
     @Test
     public void findByID() {
+    }
+
+    public static void main(String[] args) {
+
     }
 }

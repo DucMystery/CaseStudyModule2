@@ -193,6 +193,7 @@ public class Client {
     }
 
     public void chooseAction() {
+        System.out.println("******MENU***********");
         System.out.println("Select  action:");
         System.out.println("1.Add new product :");
         System.out.println("2.Edit name by ID :");
@@ -200,7 +201,7 @@ public class Client {
         System.out.println("4. Edit description by ID :");
         System.out.println("5. Edit brand by ID :");
         System.out.println("6. Remove product by ID :");
-        System.out.println("7. Back account:");
+        System.out.println("7. Log out :");
         System.out.println("0. Exit");
     }
 
@@ -248,12 +249,15 @@ public class Client {
     }
 
     public void displayCustomer(){
+        System.out.println("************MENU******************");
         System.out.println("Select action :");
         System.out.println("1.Display all product :");
-        System.out.println("2. View product price up to down :");
-        System.out.println("3. View product price down to up  :");
+        System.out.println("2. View product price down to up :");
+        System.out.println("3. View product price up to down  :");
         System.out.println("4.Find product by name :");
         System.out.println("5. Find product by ID :");
+        System.out.println("6. Find by types of product :");
+        System.out.println("7. Sum the price of products :");
         System.out.println("0.Exit.");
         int chooseCustomer = scanner.nextInt();
         switch (chooseCustomer){
@@ -263,12 +267,10 @@ public class Client {
                 break;
             case 2:
                 productManager.sortPriceUp();
-                productManager.displayAll(products);
                 displayCustomer();
                 break;
             case 3:
                 productManager.sortPriceDown();
-                productManager.displayAll(products);
                 displayCustomer();
                 break;
             case 4:
@@ -279,10 +281,17 @@ public class Client {
                 displayCustomer();
                 break;
             case 5:
-                System.out.println("Enter the ID if the product to search :");
+                System.out.println("Enter the ID of the product to search :");
                 scanner.nextLine();
                 String idFind = scanner.nextLine();
                 productManager.findByID(idFind);
+                displayCustomer();
+                break;
+            case 6:
+                findByTypeProduct();
+                break;
+            case 7:
+                System.out.println("Sum the price of products is :"+productManager.sumPriceOfProduct(products)+" $");
                 displayCustomer();
                 break;
             case 0:
@@ -292,6 +301,26 @@ public class Client {
                 System.out.println("Enter 0 to 5 :");
                 displayCustomer();
                 break;
+        }
+    }
+
+    public void findByTypeProduct() {
+        System.out.println("Choose product :");
+        System.out.println("1. Fridge .");
+        System.out.println("2. Television .");
+        int chooseTypeProduct = scanner.nextInt();
+        switch (chooseTypeProduct){
+            case 1:
+                productManager.findFridge(products);
+                displayCustomer();
+                break;
+            case 2:
+                productManager.findTelevision(products);
+                displayCustomer();
+                break;
+            default:
+                System.out.println("Choose 1 or 2 :");
+                findByTypeProduct();
         }
     }
 }

@@ -133,7 +133,7 @@ public class ProductManager implements Function {
             if (matcher.matches()){
                 creatFridge((content[0].substring(8)),(content[1].substring(7)),(content[2].substring(8)),Double.parseDouble(content[3].substring(11)),Double.parseDouble(content[4].substring(8)),content[5].substring(14));
             }else if (matcher1.matches()){
-                creatTelevision((content[0].substring(8)),(content[1].substring(7)),(content[2].substring(8)),Double.parseDouble(content[3].substring(11)),Double.parseDouble(content[4].substring(8)),content[5].substring(14));
+                creatTelevision((content[0].substring(8)),(content[1].substring(7)),(content[2].substring(8)),Double.parseDouble(content[3].substring(7)),Double.parseDouble(content[4].substring(8)),content[5].substring(14));
             }
 
         }
@@ -210,7 +210,7 @@ public class ProductManager implements Function {
     }
 
     @Override
-    public ProductList<Product> sortPriceUp() {
+    public void sortPriceUp() {
         for (int i = 0; i < products.size(); i++) {
             Product currentMin = products.get(i);
             int currentMinIndex = i;
@@ -227,11 +227,11 @@ public class ProductManager implements Function {
                 products.set(i, currentMin);
             }
         }
-        return products;
+        displayAll(products);
     }
 
     @Override
-    public ProductList<Product> sortPriceDown() {
+    public void sortPriceDown() {
         boolean status = true;
         for (int k = 1; k < products.size() && status; k++) {
             status = false;
@@ -245,7 +245,7 @@ public class ProductManager implements Function {
                 }
             }
         }
-        return products;
+        displayAll(products);
     }
 
     public void deleteProduct(String id) {
@@ -269,7 +269,10 @@ public class ProductManager implements Function {
 
     public void displayAll(ProductList<Product> products){
         for (Product product :products){
-            System.out.println(product.toString());
+           if (checkProductTV(product)){
+               System.out.println(product.toString());
+           }else if (checkProductFridge(product))
+               System.out.println(product.toString());
         }
     }
 
@@ -291,14 +294,37 @@ public class ProductManager implements Function {
         for (Product product : products){
             if (checkProductTV(product)){
                 product = (Television)product;
-                if (product.getId().contains(F+id))
+                if (product.getId().contains(id))
                     System.out.println(product.toString());
             }
             if (checkProductFridge(product)){
                 product =(Fridge)product;
-                if (product.getId().contains(F+id))
+                if (product.getId().contains(id))
                     System.out.println(product.toString());
             }
         }
+    }
+    public void findFridge(ProductList<Product> products){
+        for (Product product : products){
+            if (checkProductFridge(product)){
+                System.out.println(product.toString());
+            }
+        }
+    }
+    public void findTelevision(ProductList<Product> products){
+        for (Product product :products){
+            if (checkProductTV(product))
+                System.out.println(product.toString());
+        }
+    }
+    public double sumPriceOfProduct(ProductList<Product> products){
+        double sum =0;
+        for (Product product : products){
+            if (checkProductFridge(product)){
+                sum+=product.getPrice();
+            }else if (checkProductTV(product))
+                sum+=product.getPrice();
+        }
+        return sum;
     }
 }
