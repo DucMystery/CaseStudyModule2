@@ -93,35 +93,53 @@ public class ProductManager implements Function {
         }
     }
 
+//    public void read() throws IOException {
+//        FileReader reader = new FileReader(PRODUCT_LIST_TXT);
+//        BufferedReader br = new BufferedReader(reader);
+//        String line;
+//        while ((line = br.readLine()) != null) {
+//            Matcher matcher = pattern.matcher(line);
+//            Matcher matcher1 = pattern1.matcher(line);
+//            String[] content = line.split(" ,");
+//            if (matcher.matches()) {
+//                String idFridge = content[0].substring(8);
+//                String nameFridge = content[1].substring(7);
+//                String brandFridge = content[2].substring(8);
+//                double capacityFridge = Double.parseDouble(content[3].substring(11));
+//                double priceFridge = Double.parseDouble(content[4].substring(8));
+//                String descriptionFridge = content[5].substring(14);
+//                creatFridge(idFridge, nameFridge, brandFridge, capacityFridge, priceFridge, descriptionFridge);
+//            } else if (matcher1.matches()) {
+//                String idTV = content[0].substring(8);
+////                String nameTV = content[1].substring(7);
+////                String brandTV = content[2].substring(8);
+////                double inchTV = Double.parseDouble(content[3].substring(7));
+////                double priceTV = Double.parseDouble(content[4].substring(8));
+////                String descriptionTV = content[5].substring(14);
+//                creatTelevision(idTV, nameTV, brandTV, inchTV, priceTV, descriptionTV);
+//            }
+//        }
+//        br.close();
+//    }
+
     public void read() throws IOException {
         FileReader reader = new FileReader(PRODUCT_LIST_TXT);
         BufferedReader br = new BufferedReader(reader);
         String line;
-        while ((line = br.readLine()) != null) {
+        while ((line = br.readLine())!=null){
             Matcher matcher = pattern.matcher(line);
             Matcher matcher1 = pattern1.matcher(line);
-            String[] content = line.split(" ,");
-            if (matcher.matches()) {
-                String idFridge = content[0].substring(8);
-                String nameFridge = content[1].substring(7);
-                String brandFridge = content[2].substring(8);
-                double capacityFridge = Double.parseDouble(content[3].substring(11));
-                double priceFridge = Double.parseDouble(content[4].substring(8));
-                String descriptionFridge = content[5].substring(14);
-                creatFridge(idFridge, nameFridge, brandFridge, capacityFridge, priceFridge, descriptionFridge);
-            } else if (matcher1.matches()) {
-                String idTV = content[0].substring(8);
-                String nameTV = content[1].substring(7);
-                String brandTV = content[2].substring(8);
-                double inchTV = Double.parseDouble(content[3].substring(7));
-                double priceTV = Double.parseDouble(content[4].substring(8));
-                String descriptionTV = content[5].substring(14);
-                creatTelevision(idTV, nameTV, brandTV, inchTV, priceTV, descriptionTV);
+            String []content =line.split(" ,");
+            if (matcher.matches()){
+                creatFridge((content[0].substring(8)),(content[1].substring(7)),(content[2].substring(8)),Double.parseDouble(content[3].substring(11)),Double.parseDouble(content[4].substring(8)),content[5].substring(14));
+            }else if (matcher1.matches()){
+                creatTelevision((content[0].substring(8)),(content[1].substring(7)),(content[2].substring(8)),Double.parseDouble(content[3].substring(11)),Double.parseDouble(content[4].substring(8)),content[5].substring(14));
             }
+
         }
         br.close();
-    }
 
+    }
 
     @Override
     public void editNameByID(String id, String newName) {
