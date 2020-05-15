@@ -68,7 +68,6 @@ public class ProductManager implements Function {
         }
         return false;
     }
-
     public synchronized void save() {
         try {
             FileOutputStream fout = new FileOutputStream("productList.txt");

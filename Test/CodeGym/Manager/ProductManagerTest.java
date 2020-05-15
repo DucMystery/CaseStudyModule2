@@ -16,8 +16,6 @@ import static org.junit.Assert.*;
 public class ProductManagerTest {
    public ProductList<Product> products = new ProductList<Product>();
     Product product1 = new Fridge("i1","gtx1","LG",55,3000,"new");
-    Product product2 = new Fridge("i2","gtx2","samsung",55,3000,"new");
-    Product product3 = new Fridge("i4","gtx12","Panasonic",55,3000,"new");
     Product product4 = new Fridge("i10","gtx11","LG",55,3000,"new");
     Product product5 = new Television("i11","gtx11","LG",55,3000,"new");
     Product product6 = new Television("i13","gtx11","LG",55,3000,"new");
@@ -85,6 +83,22 @@ public class ProductManagerTest {
     }
 
     public static void main(String[] args) {
+
+    }
+
+    @Test
+    public void sumPriceOfProductTest() throws FileNotFoundException {
+
+        Product product2 = new Fridge("i2","gtx2","samsung",55,3000,"new");
+        Product product3 = new Fridge("i4","gtx12","Panasonic",55,3000,"new");
+        products.add(product2);
+        products.add(product3);
+        ProductManager productManager = new ProductManager(products);
+
+        double display =6000;
+        double input = productManager.sumPriceOfProduct(products);
+
+        assertEquals(display,input,input);
 
     }
 }
